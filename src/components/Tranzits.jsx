@@ -1,8 +1,10 @@
 import { BiSolidTrashAlt } from "react-icons/bi";
 import styles from "./Tranzit.module.css"
+import { useFireStore } from "./hooks/useFireStore";
 
 
 function Tranzit({tranzit}) {
+    const {deleteDocument} = useFireStore()
   return (
     <div>
         {tranzit && tranzit.map((item) => {
@@ -11,7 +13,7 @@ function Tranzit({tranzit}) {
                 <div key={id} className={styles.card}>
                     <h4>{title}</h4>
                     <p>{price}</p>
-                    <span className={styles.trash}>
+                    <span onClick={() => deleteDocument(id)} className={styles.trash}>
                         <BiSolidTrashAlt />
                     </span>
                 </div>

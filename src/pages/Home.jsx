@@ -5,6 +5,7 @@ import useCollection from "../components/hooks/useCollection"
 
 //componenet
 import Tranzit from "../components/Tranzits";
+import AddTranzitForm from "../components/AddTranzitForm";
 
 function Home() {
   
@@ -14,6 +15,10 @@ function Home() {
     <div>
       <div className={`${styles.home} container`}>
         <Tranzit tranzit={tranzit} />
+        <div>
+          <h2>Add new Tranzit</h2>
+          <AddTranzitForm/>
+        </div>
       </div>
     </div>
   )
