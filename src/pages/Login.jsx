@@ -2,7 +2,7 @@ import styles from "./Auth.module.css"
 
 function Login() {
 
-  const loading = true
+  const loading = false
 
   return (
     <div className={styles.formWrapper}>
