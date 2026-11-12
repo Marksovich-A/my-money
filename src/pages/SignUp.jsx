@@ -1,9 +1,12 @@
 import { useState } from "react"
 import styles from "./Auth.module.css"
 
+import { useSignup } from "../components/hooks/useSignup"
+
 function SignUp() {
 
   const loading = false
+  const {signUp} = useSignup()
 
   const [userName, setUserName] = useState("")
   const [email, setEmail] = useState("")
@@ -11,10 +14,14 @@ function SignUp() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log({userName,
+
+    signUp(userName,
       email,
-      password}
+      password
     )
+    setUserName("")
+    setEmail("")
+    setpassword("")
   }
 
   return (
@@ -30,7 +37,7 @@ function SignUp() {
 
         <label htmlFor="">
           <span>Email:</span>
-          <input onChange={(e) => setEmail(e.target.value)} value={email} type="text" />
+          <input onChange={(e) => setEmail(e.target.value)} value={email} type="email" />
         </label>
 
         <label htmlFor="">
