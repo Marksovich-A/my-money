@@ -1,18 +1,21 @@
 import { useState } from "react"
 import styles from "./Auth.module.css"
+import { useLogin } from "../components/hooks/useLogin"
 
 function Login() {
+
+  const {login} = useLogin()
 
   const loading = false
   
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(
+    login(
+      email,
       password,
-      email
     )
     setEmail("")
     setPassword("")
@@ -30,7 +33,7 @@ function Login() {
 
             <label htmlFor="">
               <span>Password:</span>
-              <input onChange={() => setPassword(e.target.value)} type="password" value={password} />
+              <input onChange={(e) => setPassword(e.target.value)} type="password" value={password} />
             </label>
     
             {!loading && <button>LogIn</button>}

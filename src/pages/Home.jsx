@@ -7,9 +7,13 @@ import useCollection from "../components/hooks/useCollection"
 import Tranzit from "../components/Tranzits";
 import AddTranzitForm from "../components/AddTranzitForm";
 
+//globalContext
+import { useGlobalContext } from "../components/hooks/useGlobalContext";
+
 function Home() {
-  
-  const {data: tranzit} = useCollection("tranzit")
+  const {user} = useGlobalContext()
+  const {data: tranzit} = useCollection("tranzit", ["uid", "==", user.uid])
+
 
   return (
     <div>

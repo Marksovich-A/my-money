@@ -12,7 +12,7 @@ import { useGlobalContext } from "./components/hooks/useGlobalContext"
 
 function App() {
   
-  const {user, dispetch}  = useGlobalContext()
+  const {user, authReady}  = useGlobalContext()
  
 
   const router = createBrowserRouter(
@@ -40,7 +40,9 @@ function App() {
   )
 
   return (
-   <RouterProvider router={router}/>
+   <>
+   {authReady && <RouterProvider router={router}/>}
+   </>
   )
 }
 

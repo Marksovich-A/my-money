@@ -2,6 +2,7 @@ import { useState } from "react"
 import styles from "./AddTranzitForm.module.css"
 import { toast } from "sonner"
 import { useFireStore } from "./hooks/useFireStore"
+import { useGlobalContext } from "./hooks/useGlobalContext"
 
 
 function AddTranzitForm() {
@@ -10,6 +11,7 @@ function AddTranzitForm() {
   const [price, setPrice] = useState("")
   
   const {addDocument} = useFireStore()
+  const {user} = useGlobalContext()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -20,7 +22,8 @@ function AddTranzitForm() {
    try {
      await addDocument({
       title, 
-      price: Number(price)
+      price: Number(price),
+      uid: user.uid
     })
     setPrice("")
     setTitle("")

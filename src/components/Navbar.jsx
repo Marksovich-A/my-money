@@ -3,9 +3,18 @@ import styles from "./Navbar.module.css";
 // rrd
 import { Link, NavLink } from "react-router-dom";
 
-const user = false;
+// context 
+import { useGlobalContext } from "./hooks/useGlobalContext";
+
+//hooks
+import { useSignout } from "./hooks/useSignout";
+
 
 function Navbar() {
+
+  const {user} = useGlobalContext()
+  const {signoutUser} = useSignout()
+
   return (
     <header className={styles.header}>
       <div className="container">
@@ -15,9 +24,9 @@ function Navbar() {
 
         {user && (
           <div className={styles.avatar}>
-            <span>Hello Alibek</span>
+            <span>Hello {user.displayName}</span>
             <img src="https://picsum.photos/400" alt="" />
-            <button>LogOut</button>
+            <button onClick={signoutUser}>LogOut</button>
           </div>
         )}
 
