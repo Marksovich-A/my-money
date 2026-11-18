@@ -1,6 +1,7 @@
 import { useState } from "react"
 import styles from "./Auth.module.css"
 import { useLogin } from "../components/hooks/useLogin"
+import { Link } from "react-router-dom"
 
 function Login() {
 
@@ -35,9 +36,15 @@ function Login() {
               <span>Password:</span>
               <input onChange={(e) => setPassword(e.target.value)} type="password" value={password} />
             </label>
+
+            <div className="button-wrappers">
+              <p>
+                <Link to="/signup">If you don't have account</Link>
+              </p>
+              {!loading && <button>LogIn</button>}
+              {loading && <button className={styles.disabled} disabled>Loading...</button>}
+            </div>
     
-            {!loading && <button>LogIn</button>}
-            {loading && <button className={styles.disabled} disabled>Loading...</button>}
           </form>
         </div>
   )

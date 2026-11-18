@@ -2,6 +2,7 @@ import { useState } from "react"
 import styles from "./Auth.module.css"
 
 import { useSignup } from "../components/hooks/useSignup"
+import { Link } from "react-router-dom"
 
 function SignUp() {
 
@@ -45,8 +46,15 @@ function SignUp() {
           <input onChange={(e) => setpassword(e.target.value)} value={password} type="password" />
         </label>
 
-        {!loading && <button>LogIn</button>}
-        {loading && <button className={styles.disabled} disabled>Loading...</button>}
+        <div className="button-wrappers">
+          <p>
+            <Link to="/login">If you have account</Link>
+          </p>
+
+          {!loading && <button>LogIn</button>}
+          {loading && <button className={styles.disabled} disabled>Loading...</button>}
+        </div>
+
       </form>
     </div>
   )
